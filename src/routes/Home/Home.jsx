@@ -4,7 +4,6 @@ import logo from '../../assets/images/bili-logo.svg';
 import './Home.css';
 import { useNavigate } from 'react-router-dom';
 import { fetchLocation } from '../../api';
-import { Navigate } from 'react-router-dom';
 
 function Home() {
   const [city, setCity] = useState({ name: '', lat: 0, lon: 0 });
@@ -20,14 +19,21 @@ function Home() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    const newCity = await fetchLocation(city.name);
-
-    const { name, lat, lon } = newCity[0];
-    setCity({ ...city, name, lat, lon });
-    console.log(city);
+    try {
+      const newCity = await fetchLocation(city.name);
+      const { name, lat, lon } = newCity[0];
+      setCity({ ...city, name, lat, lon });
+      navigate('/WeatherToday', { state: { ...city, name, lat, lon } });
+    } catch (error) {
+      console.log('FetchLocation error:', error);
+      navigate('*', {
+        state: {
+          errorMessage: 'Location not found, please try again.',
+        },
+      });
+    }
 
     setIsLoading(false);
-    /*  navigate('/WeatherToday', { state: city }); */
   };
 
   return (
