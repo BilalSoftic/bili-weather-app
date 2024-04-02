@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 function ErrorPage() {
+  const location = useLocation();
   const navigate = useNavigate();
   useEffect(() => {
     const timeoutID = setTimeout(() => {
@@ -28,7 +28,13 @@ function ErrorPage() {
     >
       <h1>Oops!</h1>
       <p>Sorry, an unexpected error has occurred.</p>
-      <p></p>
+      {location.state.errorMessage && (
+        <p
+          style={{ fontWeight: 'bold', marginBottom: '2em', fontSize: '1.1em' }}
+        >
+          {location.state.errorMessage}
+        </p>
+      )}
       <Link to='/'>
         <button className='button'> return to Home page</button>
       </Link>
