@@ -36,7 +36,10 @@ function ErrorPage() {
         </p>
       )}
       <Link to='/'>
-        <button className='button'> return to Home page</button>
+        <button type='button' className='button'>
+          {' '}
+          return to Home page
+        </button>
       </Link>
     </div>
   );

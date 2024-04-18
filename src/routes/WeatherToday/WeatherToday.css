@@ -6,6 +6,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 1em;
   color: white;
+  text-transform: capitalize;
 }
 
 .column {
@@ -33,6 +34,47 @@ h3 {
 .first-column {
 }
 .second-column {
+  display: grid;
+  grid-template-columns: 55% 1fr;
+  grid-template-rows: 30% 1fr 20%;
+  grid-column-gap: 2em;
+  grid-row-gap: 2em;
+  align-items: center;
+}
+.full-width {
+  grid-column: 1 / -1; /* Span the entire row */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: white;
+  color: black;
+  border-radius: 1em;
+  padding: 1em;
+}
+.full-width h3 {
+  font-size: 2em;
+  font-weight: 500;
+}
+.full-width span {
+  margin-left: 0.2em;
+  text-transform: none;
+  font-weight: 300;
+}
+
+.second-row-first-column {
+  grid-column: 1; /* First column */
+  background-color: black;
+  color: white;
+  border-radius: 1em;
+  padding: 1em;
+}
+
+.second-row-second-column {
+  grid-column: 2; /* Second column */
+  background-color: white;
+  color: black;
+  border-radius: 1em;
+  padding: 1em;
 }
 
 @media (max-width: 900px) {
