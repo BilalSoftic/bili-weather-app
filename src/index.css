@@ -1,6 +1,11 @@
 @import 'normalize.css';
+@font-face {
+  font-family: 'Satoshi';
+  src: local('Satoshi'),
+    url('./assets/fonts/Satoshi-Variable.ttf') format('opentype');
+}
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Satoshi, system-ui, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   font-synthesis: none;

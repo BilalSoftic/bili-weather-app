@@ -64,24 +64,16 @@ function WeatherToday({}) {
                 src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@4x.png`}
                 alt='#'
               />
-              <h3
-                style={{ fontSize: '3.20em', color: 'white', fontWeight: 400 }}
-              >
+              <h3 style={{ fontSize: '3.20em', fontWeight: 400 }}>
                 {weatherData.weather[0].description}
               </h3>
             </div>
           )}
 
-          <div className='location-text' style={{ color: 'white' }}>
-            <h2 style={{ fontSize: '3.75em' }}>{name}</h2>
-            <h3 style={{ fontSize: '3.20em', fontWeight: 400 }}>
-              {weatherData.name}
-            </h3>
-            {weatherData.main && (
-              <h1 style={{ fontWeight: 900, margin: 0, fontSize: '5.75em' }}>
-                {weatherData.main.temp} °C
-              </h1>
-            )}
+          <div className='location-text'>
+            <h2>{name}</h2>
+            <h3>{weatherData.name}</h3>
+            {weatherData.main && <h1>{weatherData.main.temp}°C</h1>}
           </div>
         </div>
         <div className='column second-column'></div>

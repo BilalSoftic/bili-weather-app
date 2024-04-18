@@ -12,7 +12,7 @@ function Home() {
   const navigate = useNavigate();
 
   const handleChange = (event) => {
-    setCity({ ...city, name: event.target.value });
+    setCity({ ...city, [event.target.name]: event.target.value });
     console.log(city);
   };
 
@@ -55,6 +55,7 @@ function Home() {
             type='search'
             placeholder='Search City'
             className='input'
+            name='name'
             value={city.name}
             onChange={handleChange}
           />
