@@ -8,9 +8,9 @@ export const fetchLocation = async (cityName) => {
 
   try {
     const response = await fetch(apiBaseURL + url);
-
+    console.log(response);
     if (!response.ok) {
-      throw new Error();
+      throw new Error(response.message);
     }
     const data = await response.json();
     console.log('fetchLocation:', data);

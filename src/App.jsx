@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './routes/Home/Home';
 import WeatherToday from './routes/WeatherToday/WeatherToday';
 import ErrorPage from './routes/ErrorPage/ErrorPage';
+
 const App = () => {
   return (
     <Routes>

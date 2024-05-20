@@ -34,8 +34,13 @@ function WeatherToday({}) {
   };
   if (isLoading) {
     return (
-      <div className='background-container'>
-        <h2 className='main-header'>Loading...</h2>
+      <div
+        className='background-container'
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+        }}
+      >
+        <div className='loader'></div>
       </div>
     );
   }
@@ -51,10 +56,9 @@ function WeatherToday({}) {
         <div className='container-grid'>
           <div className='column first-column'>
             <img
-              className='logo'
+              className='logo weather-today-logo'
               src={logo}
               alt='bili-logo.svg'
-              style={{ height: '3em', margin: 0 }}
             ></img>
             {weatherData.weather?.length > 0 && (
               <div
@@ -68,20 +72,20 @@ function WeatherToday({}) {
                   src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@4x.png`}
                   alt='#'
                 />
-                <h3 style={{ fontSize: '3.20em', fontWeight: 400 }}>
+                <h1 style={{ fontWeight: 400 }}>
                   {weatherData.weather[0].description}
-                </h3>
+                </h1>
               </div>
             )}
 
             <div className='location-text'>
-              <h2>{name}</h2>
-              <h3>{weatherData.name}</h3>
-              {weatherData.main && <h1>{weatherData.main.temp}°C</h1>}
+              <h1>{name}</h1>
+              <h2>{weatherData.name}</h2>
+              {weatherData.main && <h1>{weatherData.main.temp} °C</h1>}
             </div>
           </div>
           <div className='column second-column'>
-            <div class='full-width'>
+            <div className='full-width'>
               <div>
                 <h3>
                   feels like: <span>{weatherData.main.feels_like} °C</span>
@@ -100,19 +104,21 @@ function WeatherToday({}) {
                 </h3>
               </div>
             </div>
-            <div class='second-row-first-column'>Second row, first column</div>
-            <div class='second-row-second-column'>
+            <div className='second-row-first-column'>
+              Second row, first column
+            </div>
+            <div className='second-row-second-column'>
               Second row, second column
             </div>
-            <div class='full-width' style={{ paddingInline: '2em' }}>
+            <div className='full-width' style={{ paddingInline: '2em' }}>
               <Link to='/'>
                 <button type='button' className='button'>
-                  see 5-day forecast
+                  See 5-day Forecast
                 </button>
               </Link>
               <Link to='/'>
                 <button type='button' className='button'>
-                  back to search
+                  Back To Search
                 </button>
               </Link>
             </div>

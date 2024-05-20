@@ -1,44 +1,35 @@
 .container-grid {
-  padding: 2em;
-  width: 90em;
-  max-height: 45em;
+  padding: 2rem;
+  width: 90rem;
+  max-height: 60rem;
+  min-height: 'fit-content';
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1em;
+  gap: 1rem;
   color: white;
   text-transform: capitalize;
 }
 
 .column {
   border: 2px red solid;
-  padding: 2em;
   display: flex;
   box-sizing: border-box;
   flex-direction: column;
 }
 .first-column {
-  justify-content: start;
+  position: relative;
 }
-h1 {
-  font-weight: 900;
-  margin: 0;
-  font-size: 5.75em;
-}
-h2 {
-  font-size: 3.75em;
-}
-h3 {
-  font-size: 3.2em;
-  font-weight: 400;
-}
-.first-column {
+
+.weather-today-logo {
+  height: 3rem;
+  position: absolute;
 }
 .second-column {
   display: grid;
   grid-template-columns: 55% 1fr;
-  grid-template-rows: 30% 1fr 20%;
-  grid-column-gap: 2em;
-  grid-row-gap: 2em;
+  /*  grid-template-rows: 30% 1fr 20%; */
+  grid-column-gap: 2rem;
+  grid-row-gap: 2rem;
   align-items: center;
 }
 .full-width {
@@ -48,11 +39,11 @@ h3 {
   justify-content: space-between;
   background-color: white;
   color: black;
-  border-radius: 1em;
-  padding: 1em;
+  border-radius: 1rem;
+  padding: 1rem;
 }
 .full-width h3 {
-  font-size: 2em;
+  font-size: 2rem;
   font-weight: 500;
 }
 .full-width span {
@@ -65,32 +56,20 @@ h3 {
   grid-column: 1; /* First column */
   background-color: black;
   color: white;
-  border-radius: 1em;
-  padding: 1em;
+  border-radius: 1rem;
+  padding: 1rem;
 }
 
 .second-row-second-column {
   grid-column: 2; /* Second column */
   background-color: white;
   color: black;
-  border-radius: 1em;
-  padding: 1em;
+  border-radius: 1rem;
+  padding: 1rem;
 }
 
 @media (max-width: 900px) {
   .container-grid {
     grid-template-columns: 1fr;
-  }
-  h1 {
-    font-size: 5em;
-  }
-  h2 {
-    font-size: 3em;
-    line-height: 1;
-    margin-bottom: 0.3em;
-  }
-  h3 {
-    font-size: 2.8em;
-    line-height: 1;
   }
 }
