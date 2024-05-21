@@ -1,11 +1,11 @@
-import { useState } from 'react';
 import backgroundImage from '../../assets/images/background-image.svg';
 import logo from '../../assets/images/bili-logo.svg';
 
 import CityInput from '../../components/CityInput';
+import { useGlobalContext } from '../../Context';
 
 function Home() {
-  const [isLoading, setIsLoading] = useState(false);
+  const { isLoading } = useGlobalContext();
 
   if (isLoading) {
     return (
@@ -28,7 +28,7 @@ function Home() {
     >
       <div className='center-container'>
         <img className='logo home-logo' src={logo} alt='bili-logo.svg'></img>
-        <CityInput setIsLoading={setIsLoading} />
+        <CityInput />
       </div>
     </div>
   );

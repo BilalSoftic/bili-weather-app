@@ -1,26 +1,31 @@
-import './WeatherToday.css';
-import { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { FirstColumn } from './FirstColumn';
+import { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { FetchWeatherToday } from '../../api';
 import logo from '../../assets/images/bili-logo.svg';
 import backgroundImage from '../../assets/images/background-image.svg';
+import { useGlobalContext } from '../../Context';
 
 function WeatherToday({}) {
-  const [weatherData, setWeatherData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const location = useLocation();
+  const {
+    weatherDataToday,
+    setWeatherDataToday,
+    isLoading,
+    setIsLoading,
+    city,
+  } = useGlobalContext();
+
+  const { cityName, lat, lon } = city;
+
   const navigate = useNavigate();
 
-  const { name, lat, lon } = location.state;
-
   useEffect(() => {
-    console.log('Location state:', location.state);
     setIsLoading(true);
     const fetchData = async () => {
       try {
         const newWeatherData = await FetchWeatherToday(lat, lon);
-        console.log('Fetched weather data:', newWeatherData);
-        setWeatherData(newWeatherData);
+
+        setWeatherDataToday(newWeatherData);
       } catch (error) {
         console.log('Error fetching weather data:', error);
       }
@@ -29,6 +34,7 @@ function WeatherToday({}) {
     fetchData();
   }, [lat, lon]);
 
+  /* UTILS */
   const inKilometers = (meters) => {
     return meters / 1000;
   };
@@ -52,55 +58,30 @@ function WeatherToday({}) {
         backgroundImage: `url(${backgroundImage})`,
       }}
     >
-      {weatherData?.main?.temp && (
+      {weatherDataToday && weatherDataToday?.main?.temp && (
         <div className='container-grid'>
-          <div className='column first-column'>
-            <img
-              className='logo weather-today-logo'
-              src={logo}
-              alt='bili-logo.svg'
-            ></img>
-            {weatherData.weather?.length > 0 && (
-              <div
-                className='weather-image-container'
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                }}
-              >
-                <img
-                  src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@4x.png`}
-                  alt='#'
-                />
-                <h1 style={{ fontWeight: 400 }}>
-                  {weatherData.weather[0].description}
-                </h1>
-              </div>
-            )}
-
-            <div className='location-text'>
-              <h1>{name}</h1>
-              <h2>{weatherData.name}</h2>
-              {weatherData.main && <h1>{weatherData.main.temp} °C</h1>}
-            </div>
-          </div>
+          <FirstColumn
+            logo={logo}
+            weatherDataToday={weatherDataToday}
+            cityName={cityName}
+          />
           <div className='column second-column'>
             <div className='full-width'>
               <div>
                 <h3>
-                  feels like: <span>{weatherData.main.feels_like} °C</span>
+                  feels like: <span>{weatherDataToday.main.feels_like} °C</span>
                 </h3>
                 <h3>
-                  wind speed:<span>{weatherData.wind.speed} m/s</span>
+                  wind speed:<span>{weatherDataToday.wind.speed} m/s</span>
                 </h3>
               </div>
               <div>
                 <h3>
-                  humidity:<span>{weatherData.main.humidity} %</span>
+                  humidity:<span>{weatherDataToday.main.humidity} %</span>
                 </h3>
                 <h3>
                   visibility:
-                  <span>{inKilometers(weatherData.visibility)} km</span>
+                  <span>{inKilometers(weatherDataToday.visibility)} km</span>
                 </h3>
               </div>
             </div>

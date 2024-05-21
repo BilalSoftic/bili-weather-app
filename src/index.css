@@ -65,8 +65,10 @@ label {
 h1,
 h2,
 h3,
-h4 {
+h4,
+p {
   text-wrap: balance;
+  margin: 0;
 }
 
 /* A elements that don't have a class get default styles */
@@ -141,12 +143,6 @@ textarea:not([rows]) {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h2 {
-  font-size: clamp(2rem, 3vw, 4rem);
-}
-h3 {
-  font-size: clamp(1.5rem, 2vw, 3rem);
-}
 .logo {
   width: fit-content;
   margin: 0 auto;
@@ -228,4 +224,99 @@ button:focus-visible {
   line-height: 1.1;
   text-align: center;
   font-weight: 200;
+}
+/* ===========================WEATHER TODAY=========================== */
+.container-grid {
+  padding: 2rem;
+  width: 90rem;
+  max-height: 60rem;
+  min-height: 'fit-content';
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  color: white;
+  text-transform: capitalize;
+}
+
+.column {
+  border: 2px red solid;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+}
+/* FIRST COLUMN */
+.first-column {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.weather-today-logo {
+  height: 3rem;
+  margin: 0;
+}
+
+.weather-image-description {
+  font-size: clamp(2.7rem, 2.708vw, 3.25rem);
+  font-weight: 400;
+}
+.first-column-weather-information h1 {
+  margin-top: 2rem;
+  font-size: clamp(6rem, 7.292vw, 8.75rem);
+  font-weight: 900;
+}
+.first-column-weather-information h2 {
+  font-size: clamp(3.5rem, 3.125vw, 3.75rem);
+}
+.first-column-weather-information p {
+  font-size: clamp(2rem, 2.083vw, 2.5rem);
+}
+.second-column {
+  display: grid;
+  grid-template-columns: 55% 1fr;
+  /*  grid-template-rows: 30% 1fr 20%; */
+  grid-column-gap: 2rem;
+  grid-row-gap: 2rem;
+  align-items: center;
+}
+.full-width {
+  grid-column: 1 / -1; /* Span the entire row */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: white;
+  color: black;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+.full-width h3 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+.full-width span {
+  margin-left: 0.2em;
+  text-transform: none;
+  font-weight: 300;
+}
+
+.second-row-first-column {
+  grid-column: 1; /* First column */
+  background-color: black;
+  color: white;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.second-row-second-column {
+  grid-column: 2; /* Second column */
+  background-color: white;
+  color: black;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+@media (max-width: 900px) {
+  .container-grid {
+    grid-template-columns: 1fr;
+  }
 }

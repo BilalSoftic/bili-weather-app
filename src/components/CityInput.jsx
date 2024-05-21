@@ -1,25 +1,27 @@
 import { useNavigate } from 'react-router-dom';
 import { fetchLocation } from '../api';
-import { useState } from 'react';
-const CityInput = ({ setIsLoading }) => {
-  const [city, setCity] = useState({ name: '', lat: 0, lon: 0 });
+
+import { useGlobalContext } from '../Context';
+const CityInput = () => {
+  const { city, setCity, setIsLoading, setLocalStorage } = useGlobalContext();
+
   const navigate = useNavigate();
 
   const handleChange = (event) => {
-    setCity({ ...city, [event.target.name]: event.target.value });
-    console.log(city);
+    setCity({ ...city, cityName: event.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (city.name.length !== 0) {
+    if (city.cityName.length !== 0) {
       setIsLoading(true);
       try {
-        const newCity = await fetchLocation(city.name);
+        const newCity = await fetchLocation(city.cityName);
         console.log(newCity);
         const { name, lat, lon } = newCity[0];
-        setCity({ ...city, name, lat, lon });
-        navigate('/WeatherToday', { state: { ...city, name, lat, lon } });
+        setCity({ ...city, cityName: name, lat, lon });
+        setLocalStorage({ ...city, cityName: name, lat, lon });
+        navigate('/WeatherToday');
       } catch (error) {
         console.log('FetchLocation error:', error);
         navigate('*', {
