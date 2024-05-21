@@ -1,4 +1,5 @@
 import React from 'react';
+import { IconConverter } from '../../IconConverter';
 export function FirstColumn({ logo, weatherDataToday, cityName }) {
   return (
     <div className='column first-column'>
@@ -8,18 +9,9 @@ export function FirstColumn({ logo, weatherDataToday, cityName }) {
         alt='bili-logo.svg'
       ></img>
 
-      <div
-        className='weather-image-container'
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-        }}
-      >
-        <img
-          src={`https://openweathermap.org/img/wn/${weatherDataToday.weather[0].icon}@4x.png`}
-          alt='#'
-        />
-        <h3 className='weather-image-description'>
+      <div className='weather-icon-container'>
+        <img src={IconConverter(weatherDataToday.weather[0].icon)} alt='#' />
+        <h3 className='weather-icon-description'>
           {weatherDataToday.weather[0].description}
         </h3>
       </div>

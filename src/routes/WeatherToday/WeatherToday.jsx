@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FetchWeatherToday } from '../../api';
 import logo from '../../assets/images/bili-logo.svg';
-import backgroundImage from '../../assets/images/background-image.svg';
+import backgroundImage from '../../assets/images/default-background-image.svg';
 import { useGlobalContext } from '../../Context';
 
 function WeatherToday({}) {

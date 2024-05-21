@@ -1,4 +1,4 @@
-import backgroundImage from '../../assets/images/background-image.svg';
+import backgroundImage from '../../assets/images/default-background-image.svg';
 import logo from '../../assets/images/bili-logo.svg';
 
 import CityInput from '../../components/CityInput';
