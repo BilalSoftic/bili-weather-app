@@ -45,6 +45,11 @@ body {
   height: 100%; /* Ensure the html and body elements cover the full viewport height */
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+}
+
+body {
+  background-attachment: fixed;
 }
 
 /* Set shorter line heights on headings and interactive elements */
@@ -169,11 +174,11 @@ button:focus-visible {
   background-position: center;
   background-size: cover;
   width: 100vw;
-  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 3rem;
+  overflow: hidden;
 }
 /* ===========================HOME SCREEN=========================== */
 
@@ -220,13 +225,11 @@ button:focus-visible {
   font-weight: 200;
 }
 /* ===========================WEATHER TODAY=========================== */
-.container-grid {
+.columns-container {
   padding: 2rem;
   max-width: 90rem;
-  max-height: 60rem;
-  min-height: 'fit-content';
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: row;
   gap: 1rem;
   color: white;
   text-transform: capitalize;
@@ -235,11 +238,11 @@ button:focus-visible {
 .column {
   border: 2px red solid;
   display: flex;
-  box-sizing: border-box;
   flex-direction: column;
 }
 /* FIRST COLUMN */
 .first-column {
+  width: 40%;
   display: flex;
   justify-content: space-between;
   gap: 4rem;
@@ -303,7 +306,7 @@ button:focus-visible {
   font-weight: 500;
 }
 .full-width-top span {
-  margin-left: 0.2em;
+  margin-left: 0.2rem;
   text-transform: none;
   font-weight: 300;
 }
@@ -324,7 +327,7 @@ button:focus-visible {
 }
 .center-left h3 {
   text-wrap: nowrap;
-  font-size: 1.7em;
+  font-size: 1.7rem;
   font-weight: 500;
 }
 
@@ -374,8 +377,12 @@ button:focus-visible {
   padding-inline: 2rem;
 }
 
-@media (max-width: 900px) {
-  .container-grid {
-    grid-template-columns: 1fr;
+@media (max-width: 1200px) {
+  .columns-container {
+    align-items: center;
+    flex-direction: column;
+  }
+  .first-column {
+    width: auto;
   }
 }

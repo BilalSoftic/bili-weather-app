@@ -60,7 +60,7 @@ function WeatherToday({}) {
           )})`,
         }}
       >
-        <div className='container-grid'>
+        <div className='columns-container'>
           <FirstColumn
             logo={logo}
             weatherDataToday={weatherDataToday}
