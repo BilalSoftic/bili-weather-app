@@ -10,7 +10,10 @@ export function FirstColumn({ logo, weatherDataToday, cityName }) {
       ></img>
 
       <div className='weather-icon-container'>
-        <img src={IconConverter(weatherDataToday.weather[0].icon)} alt='#' />
+        <img
+          src={IconConverter(weatherDataToday.weather[0].icon)}
+          alt='weather-icon'
+        />
         <h3 className='weather-icon-description'>
           {weatherDataToday.weather[0].description}
         </h3>

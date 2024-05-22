@@ -46,9 +46,6 @@ body {
   margin: 0;
   padding: 0;
 }
-body {
-  min-width: 350px;
-}
 
 /* Set shorter line heights on headings and interactive elements */
 h1,
@@ -163,25 +160,22 @@ button {
   transition: border-color 0.25s;
 }
 
-button:hover {
-  border-color: #646cff;
-}
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* ===========================HOME SCREEN=========================== */
 .background-container {
   background-position: center;
   background-size: cover;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 5rem;
+  padding: 3rem;
 }
+/* ===========================HOME SCREEN=========================== */
 
 .center-container {
   width: 60rem;
@@ -228,7 +222,7 @@ button:focus-visible {
 /* ===========================WEATHER TODAY=========================== */
 .container-grid {
   padding: 2rem;
-  width: 90rem;
+  max-width: 90rem;
   max-height: 60rem;
   min-height: 'fit-content';
   display: grid;
@@ -281,48 +275,103 @@ button:focus-visible {
 .first-column-weather-information p {
   font-size: clamp(2rem, 2.083vw, 2.5rem);
 }
+
+/* SECOND COLUMN */
+
 .second-column {
-  display: grid;
-  grid-template-columns: 55% 1fr;
-  /*  grid-template-rows: 30% 1fr 20%; */
-  grid-column-gap: 2rem;
-  grid-row-gap: 2rem;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  gap: 1rem;
 }
-.full-width {
-  grid-column: 1 / -1; /* Span the entire row */
+.full-width-top {
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
   background-color: white;
   color: black;
+  width: 100%;
+  gap: 0.3rem;
+  min-height: 5rem;
   border-radius: 1rem;
-  padding: 1rem;
+  padding-inline: 2rem;
 }
-.full-width h3 {
-  font-size: 2rem;
+.full-width-top h3 {
+  font-size: 1.8rem;
   font-weight: 500;
 }
-.full-width span {
+.full-width-top span {
   margin-left: 0.2em;
   text-transform: none;
   font-weight: 300;
 }
 
-.second-row-first-column {
-  grid-column: 1; /* First column */
-  background-color: black;
-  color: white;
+.second-column-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  gap: 2rem;
+}
+
+.center-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.center-left h3 {
+  text-wrap: nowrap;
+  font-size: 1.7em;
+  font-weight: 500;
+}
+
+.center-left-row {
+  height: 6rem;
+  width: 25rem;
   border-radius: 1rem;
   padding: 1rem;
 }
+.center-left-white-row {
+  align-content: center;
+  background-color: white;
+  color: black;
+}
+.center-left-black-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  gap: 1rem;
+  position: relative;
+}
+.center-left-black-row img {
+  position: absolute;
+  left: 3rem;
+}
 
-.second-row-second-column {
-  grid-column: 2; /* Second column */
+.center-right {
   background-color: white;
   color: black;
   border-radius: 1rem;
   padding: 1rem;
+  height: 100%;
+  width: 18rem;
+}
+.full-width-bottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: black;
+  color: white;
+  width: 100%;
+  min-height: 5rem;
+  border-radius: 1rem;
+  padding-inline: 2rem;
 }
 
 @media (max-width: 900px) {
