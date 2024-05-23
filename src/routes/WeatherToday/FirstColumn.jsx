@@ -1,13 +1,15 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 import { IconConverter } from '../../IconConverter';
 export function FirstColumn({ logo, weatherDataToday, cityName }) {
   return (
     <div className='column first-column'>
-      <img
-        className='logo weather-today-logo'
-        src={logo}
-        alt='bili-logo.svg'
-      ></img>
+      <Link to='/'>
+        <img
+          className='logo weather-today-logo'
+          src={logo}
+          alt='bili-logo.svg'
+        ></img>
+      </Link>
 
       <div className='weather-icon-container'>
         <img

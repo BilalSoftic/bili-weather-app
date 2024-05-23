@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { formatDateTime } from '../../helpers';
+import { formatDate, formatTime } from '../../helpers';
 import windIcon from '../../assets/weather-icons/wind-icon.svg';
+import sunriseIcon from '../../assets/weather-icons/sunrise-icon.svg';
+import sunsetIcon from '../../assets/weather-icons/sunset-icon.svg';
 import conditionsIcon from '../../assets/weather-icons/conditions-icon.svg';
 export function SecondColumn({ weatherDataToday }) {
   /* UTILS */
@@ -11,33 +13,17 @@ export function SecondColumn({ weatherDataToday }) {
 
   return (
     <div className='column second-column'>
+      {/* full width top*/}
       <div className='full-width-top'>
         <h3 className='country'>{weatherDataToday.sys.country}</h3>
         <h3 className='local-time'>
-          {formatDateTime(weatherDataToday.dt, weatherDataToday.timezone)}
+          {formatDate(weatherDataToday.dt, weatherDataToday.timezone)}
         </h3>
-        <h3>UTC</h3>
+        <h3>{formatTime(weatherDataToday.dt, weatherDataToday.timezone)}</h3>
       </div>
-      {/*  <div className='full-width'>
-        <div>
-          <h3>
-            feels like: <span>{weatherDataToday.main.feels_like} °C</span>
-          </h3>
-          <h3>
-            wind speed:<span>{weatherDataToday.wind.speed} m/s</span>
-          </h3>
-        </div>
-        <div>
-          <h3>
-            humidity:<span>{weatherDataToday.main.humidity} %</span>
-          </h3>
-          <h3>
-            visibility:
-            <span>{inKilometers(weatherDataToday.visibility)} km</span>
-          </h3>
-        </div>
-      </div> */}
+      {/* center */}
       <div className='second-column-center'>
+        {/* center left */}
         <div className='center-left'>
           <div className='center-left-row center-left-white-row '>
             <h3>
@@ -53,9 +39,38 @@ export function SecondColumn({ weatherDataToday }) {
             <h3>wind</h3>
           </div>
         </div>
-        <div className='center-right'>center right</div>
-      </div>
 
+        {/* center right */}
+        <div className='center-right'>
+          {/* sunrise */}
+          <div className='sun-container'>
+            <div className='sun-icon-container'>
+              <img src={sunriseIcon} alt='sunrise-icon' />
+              <p>sunrise</p>
+            </div>
+            <h2>
+              {formatTime(
+                weatherDataToday.sys.sunrise,
+                weatherDataToday.timezone
+              )}
+            </h2>
+          </div>
+          {/* sunset */}
+          <div className='sun-container'>
+            <div className='sun-icon-container'>
+              <img src={sunsetIcon} alt='sunrise-icon' />
+              <p>sunset</p>
+            </div>
+            <h2>
+              {formatTime(
+                weatherDataToday.sys.sunset,
+                weatherDataToday.timezone
+              )}
+            </h2>
+          </div>
+        </div>
+      </div>
+      {/* full width bottom */}
       <div
         className='full-width-bottom'
         style={{
@@ -63,12 +78,12 @@ export function SecondColumn({ weatherDataToday }) {
         }}
       >
         <Link to='/'>
-          <button type='button' className='button'>
+          <button type='button' className='button five-day-button'>
             See 5-day Forecast
           </button>
         </Link>
         <Link to='/'>
-          <button type='button' className='button'>
+          <button type='button' className='button back-to-search-button'>
             Back To Search
           </button>
         </Link>
