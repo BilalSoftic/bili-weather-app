@@ -177,7 +177,7 @@ button:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 3rem;
+  padding-inline: 3rem;
   overflow: hidden;
 }
 /* ===========================HOME SCREEN=========================== */
@@ -236,16 +236,17 @@ button:focus-visible {
 }
 
 .column {
+  justify-content: space-between;
+  height: 40rem;
   border: 2px red solid;
   display: flex;
   flex-direction: column;
 }
 /* FIRST COLUMN */
 .first-column {
-  width: 40%;
-  display: flex;
-  justify-content: space-between;
-  gap: 4rem;
+  min-width: fit-content;
+  max-width: 45%;
+  gap: 3rem;
 }
 
 .weather-today-logo {
@@ -263,30 +264,28 @@ button:focus-visible {
   font-weight: 400;
 }
 .weather-icon-description {
-  font-size: clamp(2.7rem, 2.708vw, 3.25rem);
+  text-wrap: nowrap;
+  font-size: 3.25rem;
   font-weight: 400;
 }
 .first-column-weather-information h1 {
   margin-top: 2rem;
-  font-size: clamp(6rem, 7.292vw, 8.75rem);
+  font-size: 8.75rem;
   font-weight: 900;
   text-wrap: nowrap;
 }
 .first-column-weather-information h2 {
-  font-size: clamp(3.5rem, 3.125vw, 3.75rem);
+  font-size: 3.75rem;
 }
 .first-column-weather-information p {
-  font-size: clamp(2rem, 2.083vw, 2.5rem);
+  font-size: 2.5rem;
 }
 
 /* SECOND COLUMN */
 
 .second-column {
-  display: flex;
   align-items: center;
-  justify-content: space-between;
   text-align: center;
-  gap: 1rem;
 }
 
 /* full width top */
@@ -319,15 +318,18 @@ button:focus-visible {
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  gap: 2rem;
+  height: 23rem;
+  gap: 3rem;
 }
 /* center left */
 .center-left {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 2rem;
+  width: 23rem;
+  gap: 1rem;
 }
+
 .center-left h3 {
   text-wrap: nowrap;
   font-size: 1.7rem;
@@ -335,8 +337,9 @@ button:focus-visible {
 }
 
 .center-left-row {
-  height: 6rem;
-  width: 25rem;
+  width: 100%;
+  min-height: 6rem;
+
   border-radius: 1rem;
   padding: 1rem;
 }
@@ -347,17 +350,39 @@ button:focus-visible {
 }
 .center-left-black-row {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   background: rgba(0, 0, 0, 0.7);
-  cursor: pointer;
   color: white;
-  position: relative;
+  gap: 2rem;
+}
+.secondary-weather-icon {
+  padding-left: 3rem;
+}
+
+/* hovered information */
+.hovered-information {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+.center-left-row-hovered {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: white;
+  width: 100%;
+  min-height: 6rem;
+  padding: 1rem;
   gap: 1rem;
 }
-.center-left-black-row img {
-  position: absolute;
-  left: 3rem;
+
+.center-left-row-hovered span {
+  text-transform: none;
+  font-weight: 300;
+  margin-left: 0.5rem;
 }
 /* center right */
 .center-right {
@@ -369,6 +394,7 @@ button:focus-visible {
   color: black;
   border-radius: 1rem;
   padding: 1rem;
+  gap: 2rem;
   min-height: 100%;
   width: 18rem;
 }
