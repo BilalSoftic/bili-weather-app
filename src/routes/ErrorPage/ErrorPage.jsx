@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useGlobalContext } from '../../Context';
 
 function ErrorPage() {
+  const { defaultBackgroundImage } = useGlobalContext();
   const location = useLocation();
   const navigate = useNavigate();
   useEffect(() => {
@@ -24,6 +26,7 @@ function ErrorPage() {
         textAlign: 'center',
         minHeight: '100vh',
         minWidth: '100vw',
+        backgroundImage: `url(${defaultBackgroundImage})`,
       }}
     >
       <h1>Oops!</h1>

@@ -2,21 +2,22 @@ import { useNavigate } from 'react-router-dom';
 import { fetchLocation } from '../../api';
 
 import { useGlobalContext } from '../../Context';
+import { useState } from 'react';
 const CityInput = () => {
   const { city, setCity, setIsLoading, setLocalStorage } = useGlobalContext();
-
+  const [cityName, setCityName] = useState('');
   const navigate = useNavigate();
 
   const handleChange = (event) => {
-    setCity({ ...city, cityName: event.target.value });
+    setCityName(event.target.value);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (city.cityName.length !== 0) {
+    if (cityName.length !== 0) {
       setIsLoading(true);
       try {
-        const newCity = await fetchLocation(city.cityName);
+        const newCity = await fetchLocation(cityName);
         console.log(newCity);
         const { name, lat, lon } = newCity[0];
         setCity({ ...city, cityName: name, lat, lon });

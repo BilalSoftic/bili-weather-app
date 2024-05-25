@@ -264,7 +264,6 @@ button:focus-visible {
   font-weight: 400;
 }
 .weather-icon-description {
-  text-wrap: nowrap;
   font-size: 3.25rem;
   font-weight: 400;
 }
@@ -434,6 +433,7 @@ button:focus-visible {
   padding-inline: 2rem;
 }
 .five-day-button {
+  text-transform: capitalize;
   background: rgba(255, 255, 255, 0.8);
   font-size: 1.2rem;
   font-weight: 700;
@@ -446,6 +446,7 @@ button:focus-visible {
   background: transparent;
   color: white;
   text-decoration: underline;
+  text-transform: capitalize;
   font-size: 1.2rem;
   font-weight: 700;
   width: 16rem;
