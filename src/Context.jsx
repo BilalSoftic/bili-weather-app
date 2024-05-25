@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from 'react';
 import { FetchWeatherToday } from './api';
 import logo from './assets/images/bili-logo.svg';
-import defaultBackgroundImage from './assets/images/default-background-image.svg';
+import defaultBackgroundImage from './assets/images/default-background-image.jpg';
 const AppContext = createContext();
 
 const defaultCity = JSON.parse(localStorage.getItem('city') || '[]');

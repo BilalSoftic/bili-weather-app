@@ -1,13 +1,13 @@
-import defaultBackground from './assets/images/default-background-image.svg';
-import clearSkyBackground from './assets/images/clear-sky-background-image.svg';
-import fewCloudsBackground from './assets/images/few-clouds-background-image.svg';
-import scatteredCloudsBackground from './assets/images/scattered-clouds-background-image.svg';
-import showerRainBackground from './assets/images/shower-rain-background-image.svg';
-import rainBackground from './assets/images/rain-background-image.svg';
-import brokenCloudsBackground from './assets/images/broken-clouds-background-image.svg';
-import thunderstormBackground from './assets/images/thunderstorm-background-image.svg';
-import snowBackground from './assets/images/snow-background-image.svg';
-import mistBackground from './assets/images/mist-background-image.svg';
+import defaultBackground from './assets/images/default-background-image.jpg';
+import clearSkyBackground from './assets/images/clear-sky-background-image.jpg';
+import fewCloudsBackground from './assets/images/few-clouds-background-image.jpg';
+import scatteredCloudsBackground from './assets/images/scattered-clouds-background-image.jpg';
+import showerRainBackground from './assets/images/shower-rain-background-image.jpg';
+import rainBackground from './assets/images/rain-background-image.jpg';
+import brokenCloudsBackground from './assets/images/broken-clouds-background-image.jpg';
+import thunderstormBackground from './assets/images/thunderstorm-background-image.jpg';
+import snowBackground from './assets/images/snow-background-image.jpg';
+import mistBackground from './assets/images/mist-background-image.jpg';
 
 export function BackgroundImageConverter(iconCode) {
   switch (iconCode) {
