@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
-import { IconConverter } from '../../IconConverter';
-export function FirstColumn({ logo, weatherDataToday, cityName }) {
+import { IconConverter } from '../../../IconConverter';
+import { useGlobalContext } from '../../../Context';
+export function FirstColumn() {
+  const { logo, weatherDataToday, city } = useGlobalContext();
+  const { cityName } = city;
   return (
     <div className='column first-column'>
       <Link to='/'>

@@ -1,12 +1,13 @@
+import { CountyAndDateTime } from './CountyAndDateTime';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { formatDate, formatTime } from '../../helpers';
-import windIcon from '../../assets/weather-icons/wind-icon.svg';
-import sunriseIcon from '../../assets/weather-icons/sunrise-icon.svg';
-import sunsetIcon from '../../assets/weather-icons/sunset-icon.svg';
-import conditionsIcon from '../../assets/weather-icons/conditions-icon.svg';
-import pressureIcon from '../../assets/weather-icons/pressure-icon.svg';
-import humidityIcon from '../../assets/weather-icons/humidity-icon.svg';
+import { formatTime } from '../../../helpers';
+import windIcon from '../../../assets/weather-icons/wind-icon.svg';
+import sunriseIcon from '../../../assets/weather-icons/sunrise-icon.svg';
+import sunsetIcon from '../../../assets/weather-icons/sunset-icon.svg';
+import conditionsIcon from '../../../assets/weather-icons/conditions-icon.svg';
+import pressureIcon from '../../../assets/weather-icons/pressure-icon.svg';
+import humidityIcon from '../../../assets/weather-icons/humidity-icon.svg';
 export function SecondColumn({ weatherDataToday }) {
   const [isHoverConditions, setIsHoverConditions] = useState(false);
   /* UTILS */
@@ -17,13 +18,7 @@ export function SecondColumn({ weatherDataToday }) {
   return (
     <div className='column second-column'>
       {/* full width top*/}
-      <div className='full-width-top'>
-        <h3 className='country'>{weatherDataToday.sys.country}</h3>
-        <h3 className='local-time'>
-          {formatDate(weatherDataToday.dt, weatherDataToday.timezone)}
-        </h3>
-        <h3>{formatTime(weatherDataToday.dt, weatherDataToday.timezone)}</h3>
-      </div>
+      <CountyAndDateTime weatherDataToday={weatherDataToday} />
       {/* center */}
       <div className='second-column-center'>
         {/* center left */}

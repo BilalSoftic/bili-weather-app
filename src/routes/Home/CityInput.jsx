@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import { fetchLocation } from '../api';
+import { fetchLocation } from '../../api';
 
-import { useGlobalContext } from '../Context';
+import { useGlobalContext } from '../../Context';
 const CityInput = () => {
   const { city, setCity, setIsLoading, setLocalStorage } = useGlobalContext();
 

@@ -1,40 +1,20 @@
-import { SecondColumn } from './SecondColumn';
-import { FirstColumn } from './FirstColumn';
+import { SecondColumn } from './SecondColumn/SecondColumn';
+import { FirstColumn } from './FirstColumn/FirstColumn';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FetchWeatherToday } from '../../api';
-import logo from '../../assets/images/bili-logo.svg';
-import defaultBackgroundImage from '../../assets/images/default-background-image.svg';
 import { useGlobalContext } from '../../Context';
 import { BackgroundImageConverter } from '../../BackgroundImageConverter';
 
-function WeatherToday({}) {
-  const {
-    weatherDataToday,
-    setWeatherDataToday,
-    isLoading,
-    setIsLoading,
-    city,
-  } = useGlobalContext();
-
-  const { cityName, lat, lon } = city;
+function WeatherToday() {
+  const { weatherDataToday, isLoading, defaultBackgroundImage, displayData } =
+    useGlobalContext();
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    setIsLoading(true);
-    const fetchData = async () => {
-      try {
-        const newWeatherData = await FetchWeatherToday(lat, lon);
-
-        setWeatherDataToday(newWeatherData);
-      } catch (error) {
-        console.log('Error fetching weather data:', error);
-      }
-      setIsLoading(false);
-    };
-    fetchData();
-  }, [lat, lon]);
+    displayData();
+  }, []);
 
   if (isLoading) {
     return (
@@ -61,11 +41,7 @@ function WeatherToday({}) {
         }}
       >
         <div className='columns-container'>
-          <FirstColumn
-            logo={logo}
-            weatherDataToday={weatherDataToday}
-            cityName={cityName}
-          />
+          <FirstColumn />
           <SecondColumn weatherDataToday={weatherDataToday} />
         </div>
       </div>

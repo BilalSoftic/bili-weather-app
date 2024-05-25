@@ -1,18 +1,15 @@
-import backgroundImage from '../../assets/images/default-background-image.svg';
-import logo from '../../assets/images/bili-logo.svg';
-
-import CityInput from '../../components/CityInput';
+import CityInput from './CityInput';
 import { useGlobalContext } from '../../Context';
 
 function Home() {
-  const { isLoading } = useGlobalContext();
+  const { isLoading, logo, defaultBackgroundImage } = useGlobalContext();
 
   if (isLoading) {
     return (
       <div
         className='background-container'
         style={{
-          backgroundImage: `url(${backgroundImage})`,
+          backgroundImage: `url(${defaultBackgroundImage})`,
         }}
       >
         <div className='loader'></div>
@@ -23,7 +20,7 @@ function Home() {
     <div
       className='background-container'
       style={{
-        backgroundImage: `url(${backgroundImage})`,
+        backgroundImage: `url(${defaultBackgroundImage})`,
       }}
     >
       <div className='center-container'>
