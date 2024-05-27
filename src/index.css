@@ -180,6 +180,7 @@ button:focus-visible {
   padding-inline: 3rem;
   overflow: hidden;
 }
+
 /* ===========================HOME SCREEN=========================== */
 
 .center-container {
@@ -440,9 +441,10 @@ button:focus-visible {
   width: 16rem;
 }
 .five-day-button:hover {
-  background: white;
+  background: black;
+  color: white;
 }
-.back-to-search-button {
+.back-to-search-transparent-button {
   background: transparent;
   color: white;
   text-decoration: underline;
@@ -451,8 +453,89 @@ button:focus-visible {
   font-weight: 700;
   width: 16rem;
 }
-.back-to-search-button:hover {
+.back-to-search-transparent-button:hover {
   filter: drop-shadow(0 0 1rem white);
+}
+
+/* ===========================FIVE DAY FORECAST=========================== */
+
+.wide-center-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 90vw;
+  padding: 2rem;
+}
+.top-container {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+}
+.back-to-search-black-button {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  text-transform: capitalize;
+  height: 100%;
+  line-height: 1.2;
+  font-size: 1.2rem;
+  font-weight: 700;
+  width: 10rem;
+}
+.back-to-search-black-button:hover {
+  background: white;
+  color: black;
+}
+.days-container {
+}
+.day-wrapper {
+  margin-top: 1.5rem;
+}
+.date {
+  padding-left: 3rem;
+}
+.scrolling-container {
+  display: flex;
+  flex-flow: row;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 2rem;
+  padding: 2rem;
+  gap: 2rem;
+}
+.scrolling-container::-webkit-scrollbar {
+  width: 0rem; /* Mostly for vertical scrollbars */
+  height: 0.6rem; /* Mostly for horizontal scrollbars */
+  border-radius: 0.3rem;
+}
+
+.scrolling-container::-webkit-scrollbar-thumb {
+  /* Foreground */
+  background: white;
+  border-radius: 0.3rem;
+}
+.scrolling-container::-webkit-scrollbar-track {
+  /* Background */
+  background: transparent;
+}
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  background-color: white;
+  gap: 1rem;
+  border-radius: 1rem;
+  padding: 1rem;
+  height: 17rem;
+  min-width: 12rem;
+  max-width: 12rem;
+}
+
+.card img {
+  height: 3.5rem;
+  filter: invert(100%);
 }
 
 @media (max-width: 1200px) {

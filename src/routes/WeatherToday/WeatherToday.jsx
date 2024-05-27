@@ -1,19 +1,19 @@
 import { SecondColumn } from './SecondColumn/SecondColumn';
 import { FirstColumn } from './FirstColumn/FirstColumn';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { FetchWeatherToday } from '../../api';
 import { useGlobalContext } from '../../Context';
 import { BackgroundImageConverter } from '../../BackgroundImageConverter';
 
 function WeatherToday() {
-  const { weatherDataToday, isLoading, defaultBackgroundImage, displayData } =
-    useGlobalContext();
-
-  const navigate = useNavigate();
+  const {
+    weatherDataToday,
+    isLoading,
+    defaultBackgroundImage,
+    handleDataForWeatherToday,
+  } = useGlobalContext();
 
   useEffect(() => {
-    displayData();
+    handleDataForWeatherToday();
   }, []);
 
   if (isLoading) {

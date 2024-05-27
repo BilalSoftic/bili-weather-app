@@ -35,3 +35,18 @@ export const FetchWeatherToday = async (lat, lon) => {
     alert(error);
   }
 };
+export const FetchFiveDayWeather = async (lat, lon) => {
+  const url = `data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+  console.log(url);
+  try {
+    const response = await fetch(apiBaseURL + url);
+    if (!response.ok) {
+      throw new Error();
+    }
+    const data = await response.json();
+    console.log('FetchFiveDayWeather:', data);
+    return data;
+  } catch (error) {
+    alert(error);
+  }
+};

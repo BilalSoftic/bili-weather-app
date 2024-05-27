@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from 'react';
-import { FetchWeatherToday } from './api';
+import { FetchFiveDayWeather, FetchWeatherToday } from './api';
 import logo from './assets/images/bili-logo.svg';
 import defaultBackgroundImage from './assets/images/default-background-image.jpg';
 const AppContext = createContext();
@@ -14,12 +14,36 @@ export function AppProvider({ children }) {
   const [isLoading, setIsLoading] = useState(false);
   const [city, setCity] = useState(defaultCity);
   const [weatherDataToday, setWeatherDataToday] = useState({});
+  const [fiveDayWeatherData, setFiveDayWeatherData] = useState({});
 
-  const displayData = async () => {
+  const handleDataForWeatherToday = async () => {
     setIsLoading(true);
     try {
       const data = await FetchWeatherToday(city.lat, city.lon);
       setWeatherDataToday(data);
+    } catch (error) {
+      console.log('Error displaying weather data:', error);
+    }
+    setIsLoading(false);
+  };
+
+  const handleDataForFiveDayWeather = async () => {
+    setIsLoading(true);
+    try {
+      const data = await FetchFiveDayWeather(city.lat, city.lon);
+      const fiveDayWeatherMap = new Map();
+
+      data.list.forEach((item) => {
+        const date = item.dt_txt.split(' ')[0];
+        if (fiveDayWeatherMap.has(date)) {
+          fiveDayWeatherMap.get(date).push(item);
+        } else {
+          fiveDayWeatherMap.set(date, [item]);
+        }
+      });
+
+      setFiveDayWeatherData(fiveDayWeatherMap);
+      /*  */
     } catch (error) {
       console.log('Error displaying weather data:', error);
     }
@@ -31,13 +55,14 @@ export function AppProvider({ children }) {
         city,
         setCity,
         weatherDataToday,
-        setWeatherDataToday,
         isLoading,
         setIsLoading,
         setLocalStorage,
         logo,
         defaultBackgroundImage,
-        displayData,
+        handleDataForWeatherToday,
+        handleDataForFiveDayWeather,
+        fiveDayWeatherData,
       }}
     >
       {children}
