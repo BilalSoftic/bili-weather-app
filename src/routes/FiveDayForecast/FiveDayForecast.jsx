@@ -1,8 +1,9 @@
+import { Day } from './Day';
 import { useGlobalContext } from '../../Context';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CountryAndDateTime } from '../WeatherToday/SecondColumn/CountryAndDateTime';
-import { IconConverter } from '../../IconConverter';
+
 function FiveDayForecast() {
   const {
     fiveDayWeatherData,
@@ -65,27 +66,7 @@ function FiveDayForecast() {
               {fiveDayWeatherArray.map(([date, weatherData]) => {
                 return (
                   /* day */
-                  <div className='day-wrapper' key={date}>
-                    {console.log(1, weatherData)}
-                    <h2 className='date'>{date}</h2>
-                    <div className='scrolling-container'>
-                      {weatherData.map((item) => (
-                        <div className='card' key={item.dt}>
-                          <h2>
-                            {/* Temp: */} <span>{item.main.temp}°C</span>
-                          </h2>
-                          <img
-                            src={IconConverter(item.weather[0].icon)}
-                            alt='weather-icon'
-                          />
-                          <h2>
-                            {/* Weather: */}
-                            {item.weather[0].description}
-                          </h2>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                  <Day key={date} date={date} weatherData={weatherData} />
                 );
               })}
             </div>

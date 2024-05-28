@@ -44,3 +44,38 @@ export function getWindDirection(degree) {
   const index = Math.round(degree / 22.5) % 16;
   return directions[index];
 }
+
+export function formatDateString(dateString) {
+  // Split the date string into year, month, and day parts
+  const [year, monthNum, dayOfMonth] = dateString.split('-').map(Number);
+
+  // Create a new Date object
+  const dateObj = new Date(year, monthNum - 1, dayOfMonth);
+
+  const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const monthNames = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+  const dayOfWeek = daysOfWeek[dateObj.getDay()]; // Get day of the week
+  const monthName = monthNames[dateObj.getMonth()]; // Get the real month name
+
+  return `${dayOfWeek}, ${dayOfMonth} ${monthName}`;
+}
+
+export function formatTimeString(timeString) {
+  // Split the time string into hours, minutes, and seconds
+  const [hours, minutes] = timeString.split(':');
+  // Construct the formatted time string with hours and minutes only
+  return `${hours}:${minutes} h`;
+}

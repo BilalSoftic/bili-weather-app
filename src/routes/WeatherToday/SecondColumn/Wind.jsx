@@ -48,7 +48,7 @@ export function Wind({ isConditionsHover, isWindHover, setIsWindHover }) {
             <img src={speedIcon} alt='speed-icon' />
             <h3>
               speed:
-              <span>{inKilometersPerHour(speed).toFixed(2)} km/h</span>
+              <span>{inKilometersPerHour(speed).toFixed(1)} km/h</span>
             </h3>
           </div>
           {/* direction */}
@@ -65,7 +65,7 @@ export function Wind({ isConditionsHover, isWindHover, setIsWindHover }) {
               <img src={windIcon} alt='wind-icon' />
               <h3>
                 gust:
-                <span>{inKilometersPerHour(gust).toFixed(2)}</span>
+                <span>{inKilometersPerHour(gust).toFixed(1)} km/h</span>
               </h3>
             </div>
           )}
