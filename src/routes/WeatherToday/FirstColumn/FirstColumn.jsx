@@ -25,8 +25,8 @@ export function FirstColumn() {
       <div className='first-column-weather-information '>
         <h2>{cityName}</h2>
         <p>{name}</p>
-        <h1>{main.temp} °C</h1>
       </div>
+      <h1 className='weather-temp'>{main.temp} °C</h1>
     </div>
   );
 }
