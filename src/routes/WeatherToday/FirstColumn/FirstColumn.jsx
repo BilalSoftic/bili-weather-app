@@ -15,7 +15,11 @@ export function FirstColumn() {
         ></img>
       </Link>
       <div className='weather-icon-container'>
-        <img src={IconConverter(weather[0].icon)} alt='weather-icon' />
+        <img
+          src={IconConverter(weather[0].icon)}
+          alt='weather-icon'
+          className='weather-icon'
+        />
         <h3 className='weather-icon-description'>{weather[0].description}</h3>
       </div>
       <div className='first-column-weather-information '>
