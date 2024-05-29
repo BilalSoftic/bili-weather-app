@@ -54,12 +54,14 @@ function FiveDayForecast() {
               src={logo}
               alt='bili-logo.svg'
             ></img>
-            <CountryAndDateTime
-              dt={dt}
-              timezone={timezone}
-              country={sys.country}
-              city={city.cityName}
-            />
+            {sys && (
+              <CountryAndDateTime
+                dt={dt}
+                timezone={timezone}
+                country={sys.country}
+                city={city.cityName}
+              />
+            )}
             <Link to='/'>
               <button
                 type='button'

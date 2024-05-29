@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from 'react';
 import { FetchFiveDayWeather, FetchWeatherToday } from './api';
+import { toast } from 'react-toastify';
 import logo from './assets/images/bili-logo.svg';
 import defaultBackgroundImage from './assets/images/default-background-image.jpg';
 const AppContext = createContext();
@@ -63,6 +64,7 @@ export function AppProvider({ children }) {
         handleDataForWeatherToday,
         handleDataForFiveDayWeather,
         fiveDayWeatherData,
+        toast,
       }}
     >
       {children}

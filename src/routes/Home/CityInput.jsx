@@ -4,7 +4,8 @@ import { fetchLocation } from '../../api';
 import { useGlobalContext } from '../../Context';
 import { useState } from 'react';
 const CityInput = () => {
-  const { city, setCity, setIsLoading, setLocalStorage } = useGlobalContext();
+  const { city, setCity, setIsLoading, setLocalStorage, toast } =
+    useGlobalContext();
   const [cityName, setCityName] = useState('');
   const navigate = useNavigate();
 
@@ -25,16 +26,11 @@ const CityInput = () => {
         navigate('/WeatherToday');
       } catch (error) {
         console.log('FetchLocation error:', error);
-        navigate('*', {
-          state: {
-            errorMessage: 'Location not found, please try again.',
-          },
-        });
+        toast.error('Location not found, please try again.');
       }
-
       setIsLoading(false);
     } else {
-      alert('Please input a city name');
+      toast.error('City name required!');
     }
   };
   return (
