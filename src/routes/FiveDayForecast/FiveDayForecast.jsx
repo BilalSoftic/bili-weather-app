@@ -13,6 +13,7 @@ function FiveDayForecast() {
     handleDataForFiveDayWeather,
     handleDataForWeatherToday,
     weatherDataToday,
+    city,
   } = useGlobalContext();
 
   useEffect(() => {
@@ -21,6 +22,8 @@ function FiveDayForecast() {
   }, []);
 
   const fiveDayWeatherArray = Array.from(fiveDayWeatherData);
+
+  const { dt, timezone, sys } = weatherDataToday;
 
   if (isLoading) {
     return (
@@ -51,7 +54,12 @@ function FiveDayForecast() {
               src={logo}
               alt='bili-logo.svg'
             ></img>
-            <CountryAndDateTime />
+            <CountryAndDateTime
+              dt={dt}
+              timezone={timezone}
+              country={sys.country}
+              city={city.cityName}
+            />
             <Link to='/'>
               <button
                 type='button'
