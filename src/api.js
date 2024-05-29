@@ -8,9 +8,9 @@ export const fetchLocation = async (cityName) => {
 
   try {
     const response = await fetch(apiBaseURL + url);
-
+    console.log(response);
     if (!response.ok) {
-      throw new Error();
+      throw new Error(response.message);
     }
     const data = await response.json();
     console.log('fetchLocation:', data);
@@ -30,6 +30,21 @@ export const FetchWeatherToday = async (lat, lon) => {
     }
     const data = await response.json();
     console.log('fetchWeatherToday:', data);
+    return data;
+  } catch (error) {
+    alert(error);
+  }
+};
+export const FetchFiveDayWeather = async (lat, lon) => {
+  const url = `data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+  console.log(url);
+  try {
+    const response = await fetch(apiBaseURL + url);
+    if (!response.ok) {
+      throw new Error();
+    }
+    const data = await response.json();
+    console.log('FetchFiveDayWeather:', data);
     return data;
   } catch (error) {
     alert(error);
