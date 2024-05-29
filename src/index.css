@@ -42,7 +42,7 @@ ol[role='list'] {
 /* Set core body defaults */
 html,
 body {
-  height: 100%; /* Ensure the html and body elements cover the full viewport height */
+  height: 100vh;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
@@ -229,6 +229,7 @@ button:focus-visible {
 .columns-container {
   padding: 2rem;
   max-width: 90rem;
+  min-width: fit-content;
   display: flex;
   flex-direction: row;
   gap: 1rem;
@@ -239,7 +240,6 @@ button:focus-visible {
 .column {
   justify-content: space-between;
   height: 40rem;
-  border: 2px red solid;
   display: flex;
   flex-direction: column;
 }
