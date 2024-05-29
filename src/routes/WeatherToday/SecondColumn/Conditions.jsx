@@ -4,6 +4,7 @@ import pressureIcon from '../../../assets/weather-icons/pressure-icon.svg';
 import humidityIcon from '../../../assets/weather-icons/humidity-icon.svg';
 import { inKilometers } from '../../../helpers';
 import { useGlobalContext } from '../../../Context';
+import { FaTimes } from 'react-icons/fa';
 
 export function Conditions({
   setIsConditionsHover,
@@ -14,12 +15,8 @@ export function Conditions({
   const { visibility, main } = weatherDataToday;
   return (
     <div
-      onMouseOver={() => {
-        setIsConditionsHover(true);
-      }}
-      onMouseLeave={() => {
-        setIsConditionsHover(false);
-      }}
+      onMouseOver={() => setIsConditionsHover(true)}
+      onMouseLeave={() => setIsConditionsHover(false)}
       className='center-left-row center-left-black-row'
       style={{
         height: isConditionsHover ? '100%' : '',
@@ -29,6 +26,13 @@ export function Conditions({
     >
       {isConditionsHover ? (
         <div className='hovered-information'>
+          <button
+            type='button'
+            className='hide-button'
+            onClick={() => setIsConditionsHover(false)}
+          >
+            <FaTimes />
+          </button>
           {/* visibility */}
           <div className='center-left-row-hovered'>
             <img src={conditionsIcon} alt='conditions-icon' />

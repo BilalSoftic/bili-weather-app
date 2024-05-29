@@ -3,6 +3,7 @@ import speedIcon from '../../../assets/weather-icons/speed-icon.svg';
 import directionIcon from '../../../assets/weather-icons/direction-icon.svg';
 import { getWindDirection, inKilometersPerHour } from '../../../helpers';
 import { useGlobalContext } from '../../../Context';
+import { FaTimes } from 'react-icons/fa';
 import { useRef, useState, useEffect } from 'react';
 export function Wind({ isConditionsHover, isWindHover, setIsWindHover }) {
   const [childCount, setChildCount] = useState(0);
@@ -21,12 +22,8 @@ export function Wind({ isConditionsHover, isWindHover, setIsWindHover }) {
 
   return (
     <div
-      onMouseOver={() => {
-        setIsWindHover(true);
-      }}
-      onMouseLeave={() => {
-        setIsWindHover(false);
-      }}
+      onMouseOver={() => setIsWindHover(true)}
+      onMouseLeave={() => setIsWindHover(false)}
       className='center-left-row center-left-black-row'
       style={{
         height: isWindHover ? '100%' : '',
@@ -39,10 +36,17 @@ export function Wind({ isConditionsHover, isWindHover, setIsWindHover }) {
           className='hovered-information'
           ref={containerRef}
           style={{
-            justifyContent: childCount === 2 ? 'center' : 'space-between',
-            gap: childCount === 2 ? '3.5rem' : '',
+            justifyContent: childCount === 3 ? 'center' : 'space-between',
+            gap: childCount === 3 ? '2rem' : '',
           }}
         >
+          <button
+            type='button'
+            className='hide-button'
+            onClick={() => setIsWindHover(false)}
+          >
+            <FaTimes />
+          </button>
           {/* speed */}
           <div className='center-left-row-hovered'>
             <img src={speedIcon} alt='speed-icon' />
