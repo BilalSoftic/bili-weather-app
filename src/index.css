@@ -550,6 +550,9 @@ button:focus-visible {
     gap: 0.5rem;
     padding: 2rem;
   }
+  .sun-container {
+    padding-inline: 0.8rem;
+  }
   .center-left-row {
     padding: 0.5rem;
   }
