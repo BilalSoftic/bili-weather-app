@@ -173,6 +173,7 @@ button:focus-visible {
 }
 
 .background-container {
+  background: rgba(175, 94, 32, 0.61);
   background-position: center;
   background-size: cover;
   min-height: 100%;
